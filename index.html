@@ -1,0 +1,427 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kiss the Moon – Lyrics</title>
+<style>
+  /* Background image: put the file next to this page as bg.jpg */
+  :root {
+    --bg-image: url("bg.jpg");
+    --ink: #fff;
+    --muted: rgba(255, 255, 255, 0.8);
+    --rule: rgba(255, 255, 255, 0.35);
+    --veil: rgba(30, 14, 44, 0.38);
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { background: #111; }
+  body {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    color: var(--ink);
+    background: #111;
+    isolation: isolate;
+    text-shadow: 0 1px 12px rgba(30, 10, 40, 0.45);
+    -webkit-font-smoothing: antialiased;
+    min-height: 100vh;
+  }
+  /* fixed background that stays put while the lyrics scroll */
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    background: linear-gradient(var(--veil), var(--veil)), var(--bg-image) center / cover no-repeat, #111;
+  }
+
+  .wrap {
+    max-width: 1040px;
+    margin: 0 auto;
+    padding: 12vh 48px 16vh;
+  }
+
+  header { margin-bottom: 14vh; }
+  header h1 {
+    font-size: clamp(40px, 7vw, 84px);
+    line-height: 0.95;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    text-transform: uppercase;
+  }
+  header p {
+    margin-top: 20px;
+    font-size: 15px;
+    color: var(--muted);
+  }
+  nav { margin-top: 40px; }
+  nav ol {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px 22px;
+    font-size: 15px;
+  }
+  nav a { color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--rule); }
+  nav a:hover { border-color: var(--ink); }
+  nav .n { color: var(--muted); margin-right: 6px; font-variant-numeric: tabular-nums; }
+
+  .song { margin-bottom: 18vh; scroll-margin-top: 40px; }
+  .song-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    border-top: 1px solid var(--rule);
+    padding-top: 14px;
+    margin-bottom: 56px;
+  }
+  .song h2 {
+    font-size: clamp(22px, 2.6vw, 30px);
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    text-transform: uppercase;
+  }
+  .song h2 .n { color: var(--muted); font-weight: 400; margin-right: 14px; font-variant-numeric: tabular-nums; }
+  .song .title-de {
+    font-size: clamp(22px, 2.6vw, 30px);
+    font-weight: 400;
+    color: var(--muted);
+    text-align: right;
+  }
+
+  /* one row per stanza, so original and translation always line up */
+  .stanza {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 64px;
+    font-size: 18px;
+    line-height: 1.55;
+  }
+  .stanza + .stanza { margin-top: 1.55em; }
+  .orig { text-align: left; }
+  .tran { text-align: right; color: var(--muted); }
+  .line { display: block; }
+  .credit {
+    margin-top: 56px;
+    font-size: 12px;
+    line-height: 1.5;
+    color: var(--muted);
+    display: flex;
+    justify-content: space-between;
+    gap: 24px;
+  }
+  .credit span:last-child { text-align: right; }
+
+  .credits {
+    border-top: 1px solid var(--rule);
+    padding-top: 14px;
+    font-size: 15px;
+    line-height: 1.6;
+  }
+  .credits ul { list-style: none; margin: 20px 0; font-size: clamp(22px, 2.6vw, 30px); font-weight: 700; line-height: 1.25; letter-spacing: -0.01em; }
+  .credits p { color: var(--muted); }
+
+  @media (max-width: 680px) {
+    .wrap { padding: 64px 16px 96px; }
+    header { margin-bottom: 72px; }
+    .song { margin-bottom: 96px; }
+    .song-head { flex-direction: column; gap: 4px; margin-bottom: 36px; }
+    .song .title-de { text-align: left; }
+    .stanza { grid-template-columns: 1fr; font-size: 16px; }
+    .tran { margin-top: 0.6em; }
+    .credit { flex-direction: column; gap: 4px; }
+    .credit span:last-child { text-align: left; }
+  }
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <h1>Kiss the<br>Moon</h1>
+      <p>Ronja Polzin · Lyrics &amp; Übersetzung</p>
+      <nav><ol id="toc"></ol></nav>
+    </header>
+    <main id="songs"></main>
+    <footer class="credits">
+      <p>I worked on this EP 2024–2026 with:</p>
+      <ul>
+        <li>Nathan Vanderpool</li>
+        <li>Annika Lippert</li>
+        <li>Francesco De Rosa</li>
+        <li>Cameron Laing</li>
+      </ul>
+      <p>Produced &amp; mixed by Cameron Laing at The Famous Gold Watch Studio</p>
+    </footer>
+  </div>
+
+<script>
+/*
+  Songs go here. Each song has an original text and a translation as plain text.
+  Stanzas are separated by a blank line; stanza 1 of the original sits next to
+  stanza 1 of the translation, and so on. Keep the number of stanzas equal.
+  lang / langTr default to "en" / "de".
+*/
+const SONGS = [
+  {
+    title: "Hope",
+    titleTr: "Hoffnung",
+    original: `
+Black conifers, veil of rain
+Worn paint on a wooden shed
+Half-covered in rotten shingles
+Drops falling through broken glass
+
+But inside burns no more light
+’Cause even life can’t slow the tides
+Of Father Time, who hears our fight
+Darkest night, no more light
+
+Cracked tiles and weathered wood
+Drawer next to the kitchen sink
+Lock holding a crooked key
+Seems there’s nothing to see
+
+But wrapped in cloth, mostly dry
+Mute and cold, like hollow bones
+Next to soap and cardboard mold
+Lies one last piece of hope
+`,
+    translation: `
+Schwarze Nadelbäume, Regenschleier
+Abgeblätterte Farbe an einem Holzschuppen
+Halb bedeckt von morschen Schindeln
+Tropfen fallen durch zerbrochenes Glas
+
+Doch drinnen brennt kein Licht mehr
+Denn selbst das Leben kann die Gezeiten von Vater Zeit nicht aufhalten
+Er hört unseren Kampf
+Dunkelste Nacht, kein Licht mehr
+
+Gesprungene Fliesen und verwittertes Holz
+Eine Schublade neben der Spüle
+Ein Schloss mit einem krummen Schlüssel
+Es scheint, als gäbe es hier nichts zu sehen
+
+Doch in Stoff gewickelt, fast vertrocknet
+Stumm und kalt wie hohle Knochen
+Neben Seife und schimmelndem Karton
+Liegt ein letztes Stück Hoffnung
+`,
+  },
+  {
+    title: "Toad Pond",
+    titleTr: "Krötenteich",
+    original: `
+Whirlybird leaves the maple tree to
+Kiss the moon in the toad pond
+Don’t you die, die in my sight
+
+A row of stones cross the pavement
+Pilgrimage of pregnant bodies
+Throughout the cities,
+Homeward bound
+
+Amber and lavender melt the horizon into a
+Field of sleep, til tomorrow stumbles in
+Will you lie, lie by my side?
+
+The cristal eye of a tadpole
+Freshly hatched deep in the reeds,
+Drunk in the creek, joy to be
+Home
+Home
+Home
+`,
+    translation: `
+Der Ahornsamen fliegt vom Baum, um
+Den Mond im Krötenteich zu küssen
+Stirb mir nicht, nicht vor meinen Augen
+
+Eine Reihe Steine überquert den Gehweg
+Pilgerzug schwangerer Körper
+Zieht durch die Städte,
+Nach Hause
+
+Bernstein und Lavendel schmelzen den Horizont zu einem
+Feld aus Schlaf, bis der Morgen hereinstolpert
+Möchtest du dich zu mir legen?
+
+Das Kristallauge einer Kaulquappe
+Frisch geschlüpft, tief im Schilf,
+Trunken im Bach, voller Freude,
+Zuhause
+Zuhause
+Zuhause
+`,
+  },
+  {
+    title: "Mondlied",
+    titleTr: "Moon Song",
+    lang: "de",
+    langTr: "en",
+    original: `
+Unter tiefer Wolkendecke der Mitsommernachtsnächte
+Singt weit entfernt ein gelber Mond vom Ozean und Mutter Tod,
+– die nie vergisst und nichts verliert,
+Alles frisst und neu gebiert,
+Alles frisst und neu gebiert
+
+Abertausend Flüsterstimmen
+Heute Nacht zum Bach gerinnen
+Der Tränenfluss fließt weg von hier,
+Weiter Richtung großes Meer
+Wenn Stille in den Morgen zieht,
+Singst du mit mir des Mondes Lied?
+Singst du mit mir des Mondes Lied?
+`,
+    translation: `
+Beneath a thick blanket of clouds of midsummer nights
+A yellow moon sings in the distance
+Of the ocean and of Mother Death,
+– who never forgets and loses nothing,
+Devours all and gives birth anew,
+Devours all and gives birth anew,
+
+A thousands thousands whispering voices
+Flow into a stream tonight,
+The river of tears runs away from here,
+On towards the great sea
+When silence drifts into the morning,
+Will you sing the song of the moon with me?
+Will you sing the song of the moon with me?
+`,
+  },
+  {
+    title: "Juniper",
+    original: `
+Half a breath,
+Letting go
+Step into the sky,
+Gentle breeze,
+Pulling home,
+Broken all your bones
+
+And when you tried to leave this life,
+I followed half the way.
+But you were so far gone that I
+Could only watch and wait,
+And wait, and wait.
+
+I heard you sing Ophelia’s songs.
+Thirteen years is long.
+Juniper, what have you done
+In the name of love?
+
+Two times on the other side,
+I followed half the way.
+You showed up as a fox,
+And I could only watch and wait,
+And wait, and wait.
+
+Monitors beep and hum.
+Half your skull is gone.
+Blinking lights.
+Oxygen.
+Days go on and on.
+
+And will your body heal enough
+For you to speak my name?
+I’ll hold your hands and kiss your face.
+As long as it will take, I’ll wait,
+And wait, and wait.
+`,
+    translation: `
+Ein halber Atemzug,
+Loslassen
+Ein Schritt hinaus in den Himmel,
+Sanfte Brise,
+Zieht dich nach Hause,
+Und brach alle deine Knochen.
+
+Und als du dieses Leben verlassen wolltest,
+Bin ich dir den halben Weg gefolgt,
+Doch du warst schon so weit fort, dass ich
+Nur zusehen und warten konnte,
+Und warten, und warten.
+
+Ich hörte dich Ophelias Lieder singen.
+Dreizehn Jahre sind lang.
+Juniper, was hast du nur getan
+Im Namen der Liebe?
+
+Zweimal auf der anderen Seite
+Bin ich dir den halben Weg gefolgt,
+Du bist mir als Fuchs wieder erschienen,
+Und ich konnte nur zusehen und warten,
+Und warten, und warten.
+
+Monitore piepen und summen.
+Dein halber Schädel fehlt.
+Blinkende Lichter.
+Sauerstoff.
+Die Tage ziehen weiter und weiter.
+
+Und wird dein Körper so weit heilen,
+Dass du meinen Namen wieder sagen kannst?
+Ich halte deine Hände und küsse dein Gesicht.
+So lange es dauert, werde ich warten,
+Und warten, und warten.
+`,
+  },
+  {
+    title: "The Wombat",
+    titleTr: "Der Wombat",
+    original: `
+I took the earth beneath my feet
+As solid ground, the base of things
+Turns out it’s just another thing that falls
+And eight thousand miles beneath those feet,
+A wombat presses his belly
+Against the same spinning planet,
+Certain he had found solid ground,
+When in reality it was just me.
+`,
+    translation: `
+Ich hielt die Erde unter meinen Füßen
+Für festen Boden, den Grund aller Dinge
+Doch es hat sich herausgestellt, dass sie nur eine weitere Sache ist, die fällt
+Und achttausend Meilen unter eben diesen Füßen
+Drückt ein Wombat seinen Bauch
+Gegen denselben sich drehenden Planeten,
+Überzeugt, er habe festen Boden gefunden,
+Dabei war es in Wahrheit
+Bloß ich.
+`,
+  },
+];
+
+const stanzas = (text) =>
+  text.trim().split(/\n\s*\n/).map((s) => s.split("\n").map((l) => l.trim()));
+
+const esc = (s) => s.replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+const lines = (ls) => ls.map((l) => `<span class="line">${esc(l) || "&nbsp;"}</span>`).join("");
+const pad = (i) => String(i + 1).padStart(2, "0");
+
+document.getElementById("toc").innerHTML = SONGS.map(
+  (s, i) => `<li><a href="#song-${i + 1}"><span class="n">${pad(i)}</span>${esc(s.title)}</a></li>`
+).join("");
+
+document.getElementById("songs").innerHTML = SONGS.map((s, i) => {
+  const o = stanzas(s.original);
+  const t = stanzas(s.translation || "");
+  const rows = Array.from({ length: Math.max(o.length, t.length) }, (_, k) => `
+    <div class="stanza">
+      <div class="orig" lang="${s.lang || "en"}">${lines(o[k] || [])}</div>
+      <div class="tran" lang="${s.langTr || "de"}">${lines(t[k] || [])}</div>
+    </div>`).join("");
+  return `
+  <article class="song" id="song-${i + 1}">
+    <div class="song-head">
+      <h2><span class="n">${pad(i)}</span>${esc(s.title)}</h2>
+      ${s.titleTr ? `<div class="title-de">${esc(s.titleTr)}</div>` : ""}
+    </div>
+    ${rows}
+    ${s.credit || s.creditTranslation ? `<p class="credit"><span>${esc(s.credit || "")}</span><span>${esc(s.creditTranslation || "")}</span></p>` : ""}
+  </article>`;
+}).join("");
+</script>
+</body>
+</html>
