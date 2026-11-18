@@ -113,13 +113,14 @@
   .credits {
     border-top: 1px solid var(--rule);
     padding-top: 14px;
-    font-size: 15px;
+    font-size: 16px;
     line-height: 1.6;
   }
-  .credits ul { list-style: none; margin: 20px 0; font-size: clamp(22px, 2.6vw, 30px); font-weight: 700; line-height: 1.25; letter-spacing: -0.01em; }
-  .credits li + li { margin-top: 22px; }
-  .credits li span { display: block; max-width: 56ch; margin-top: 4px; font-size: 15px; line-height: 1.5; font-weight: 400; letter-spacing: 0; color: var(--muted); }
-  .credits p { color: var(--muted); }
+  .credits p { max-width: 62ch; color: var(--muted); }
+  .credits p + p { margin-top: 18px; }
+  .credits strong { color: var(--ink); font-weight: 700; }
+  .credits .intro { margin-bottom: 28px; }
+  .credits .studio { margin-top: 28px; }
 
   @media (max-width: 680px) {
     .wrap { padding: 64px 16px 96px; }
@@ -143,15 +144,13 @@
     </header>
     <main id="songs"></main>
     <footer class="credits">
-      <p>I feel very grateful to have worked on this EP with:</p>
-      <ul>
-        <li>Cameron Laing <span>Recorded and mixed this EP. Somehow he can read minds, and I couldn’t be happier with how it turned out.</span></li>
-        <li>Annika Lippert <span>For your precious voice and beautiful harmonies. It’s always a gift to sing and play with you.</span></li>
-        <li>Francesco De Rosa <span>On piano, so tuned in and able to roll with my tempoless writing. You make these songs complete.</span></li>
-        <li>Bob Spencer <span>For the sound work and the attention to detail.</span></li>
-        <li>Nathan Vanderpool <span>My playmate, sparring partner and teacher. Thank you for all your loving input and your sharp ear and eye on my work.</span></li>
-      </ul>
-      <p>Recorded and mixed at The Famous Gold Watch Studio</p>
+      <p class="intro">𓂏 I feel so blessed to have worked on this with:</p>
+      <p><strong>Cameron Laing</strong> fucking genius recorded and mixed this EP. This man can read brains and I am beyond happy how this EP turned out – thank you!</p>
+      <p><strong>Annika Lippert</strong> with your precious voice and beautiful harmonies – it’s always such a pleasure and gift to sing and play with you! I’m a big fan of us &lt;3.</p>
+      <p><strong>Francesco De Rosa</strong> as a magician on the piano, so tuned in and able to roll with my insane tempoless writing – you make these songs truly complete. Feeling very honored you’re playing with me. 𓆉</p>
+      <p><strong>Bob Spencer</strong> thank for the sound work and attunement to the details &lt;3</p>
+      <p><strong>Nathan Vanderpool</strong> forever grateful for you as my playmate, sparring partner, teacher and for all your beautiful loving input and sharp ear/eye on my work. Through meeting you, god found her way in the form of song to my world. She would have found another way, but it’s so nice to sing.</p>
+      <p class="studio">𓇼 recorded and mixed at The Famous Gold Watch Studio</p>
     </footer>
   </div>
 
