@@ -117,6 +117,8 @@
     line-height: 1.6;
   }
   .credits ul { list-style: none; margin: 20px 0; font-size: clamp(22px, 2.6vw, 30px); font-weight: 700; line-height: 1.25; letter-spacing: -0.01em; }
+  .credits li + li { margin-top: 14px; }
+  .credits li span { display: block; font-size: 15px; font-weight: 400; letter-spacing: 0; color: var(--muted); }
   .credits p { color: var(--muted); }
 
   @media (max-width: 680px) {
@@ -136,17 +138,17 @@
   <div class="wrap">
     <header>
       <h1>Kiss the<br>Moon</h1>
-      <p>Ronja Polzin · Lyrics &amp; Übersetzung</p>
+      <p>Lyrics &amp; Translation / Übersetzung</p>
       <nav><ol id="toc"></ol></nav>
     </header>
     <main id="songs"></main>
     <footer class="credits">
       <p>I worked on this EP 2024–2026 with:</p>
       <ul>
-        <li>Nathan Vanderpool</li>
-        <li>Annika Lippert</li>
-        <li>Francesco De Rosa</li>
-        <li>Cameron Laing</li>
+        <li>Nathan Vanderpool <span>Co-writing, arrangements, backing vocals</span></li>
+        <li>Annika Lippert <span>Arrangements, backing vocals</span></li>
+        <li>Francesco De Rosa <span>Piano, arrangements</span></li>
+        <li>Cameron Laing <span>Percussion, bass, piano</span></li>
       </ul>
       <p>Produced &amp; mixed by Cameron Laing at The Famous Gold Watch Studio</p>
     </footer>
@@ -191,13 +193,14 @@ Halb bedeckt von morschen Schindeln
 Tropfen fallen durch zerbrochenes Glas
 
 Doch drinnen brennt kein Licht mehr
-Denn selbst das Leben kann die Gezeiten von Vater Zeit nicht aufhalten
+Denn selbst das Leben kann die Gezeiten
+von Vater Zeit nicht aufhalten:
 Er hört unseren Kampf
 Dunkelste Nacht, kein Licht mehr
 
 Gesprungene Fliesen und verwittertes Holz
 Eine Schublade neben der Spüle
-Ein Schloss mit einem krummen Schlüssel
+Ein Schloss mit einem verbogenen Schlüssel
 Es scheint, als gäbe es hier nichts zu sehen
 
 Doch in Stoff gewickelt, fast vertrocknet
@@ -233,14 +236,15 @@ Home
     translation: `
 Der Ahornsamen fliegt vom Baum, um
 Den Mond im Krötenteich zu küssen
-Stirb mir nicht, nicht vor meinen Augen
+Stirb bloß nicht, nicht vor meinen Augen
 
 Eine Reihe Steine überquert den Gehweg
 Pilgerzug schwangerer Körper
 Zieht durch die Städte,
-Nach Hause
+Heimkehrend
 
-Bernstein und Lavendel schmelzen den Horizont zu einem
+Bernstein und Lavendel
+schmelzen den Horizont zu einem
 Feld aus Schlaf, bis der Morgen hereinstolpert
 Möchtest du dich zu mir legen?
 
@@ -250,6 +254,7 @@ Trunken im Bach, voller Freude,
 Zuhause
 Zuhause
 Zuhause
+zu sein.
 `,
   },
   {
@@ -273,7 +278,7 @@ Singst du mit mir des Mondes Lied?
 Singst du mit mir des Mondes Lied?
 `,
     translation: `
-Beneath a thick blanket of clouds of midsummer nights
+Beneath the thick blanket of clouds of midsummer nights
 A yellow moon sings in the distance
 Of the ocean and of Mother Death,
 – who never forgets and loses nothing,
@@ -283,14 +288,15 @@ Devours all and gives birth anew,
 A thousands thousands whispering voices
 Flow into a stream tonight,
 The river of tears runs away from here,
-On towards the great sea
+Onwards to the great sea
 When silence drifts into the morning,
-Will you sing the song of the moon with me?
-Will you sing the song of the moon with me?
+Will you sing the moon’s song with me?
+Will you sing the moon’s song with me?
 `,
   },
   {
     title: "Juniper",
+    titleTr: "Wacholder",
     original: `
 Half a breath,
 Letting go
@@ -324,7 +330,7 @@ Days go on and on.
 
 And will your body heal enough
 For you to speak my name?
-I’ll hold your hands and kiss your face.
+I’ll kiss your hands and hold your face.
 As long as it will take, I’ll wait,
 And wait, and wait.
 `,
@@ -361,7 +367,7 @@ Die Tage ziehen weiter und weiter.
 
 Und wird dein Körper so weit heilen,
 Dass du meinen Namen wieder sagen kannst?
-Ich halte deine Hände und küsse dein Gesicht.
+Ich küsse deine Hände und halte dein Gesicht.
 So lange es dauert, werde ich warten,
 Und warten, und warten.
 `,
